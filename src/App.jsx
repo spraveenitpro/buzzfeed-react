@@ -29,7 +29,7 @@ const App = () => {
 		<div className="app">
 			<Title title={quiz?.title} subtitle={quiz?.subtitle} />
 			{quiz && quiz?.content.map(contentItem => (
-				<QuestionsBlock quizItem={contentItem} />
+				<QuestionsBlock key={contentItem.id} quizItem={contentItem} />
 			))}
 		</div>
 	)
