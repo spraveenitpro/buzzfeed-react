@@ -1,4 +1,5 @@
-const QuestionBlock = () => {
+const QuestionBlock = ({ quizItem }) => {
+    console.log(quizItem)
     return <div></div>
 }
 

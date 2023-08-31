@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Title from "./components/Title"
+import QuestionsBlock from "./components/QuestionsBlock"
 
 
 
@@ -27,6 +28,9 @@ const App = () => {
 
 		<div className="app">
 			<Title title={quiz?.title} subtitle={quiz?.subtitle} />
+			{quiz && quiz?.content.map(contentItem => (
+				<QuestionsBlock quizItem={contentItem} />
+			))}
 		</div>
 	)
 }
