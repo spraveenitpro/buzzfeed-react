@@ -1,7 +1,28 @@
-const QuestionBlock = ({ question }) => {
+const QuestionBlock = ({
+	question,
+	setChosenAnswerItems,
+	chosenAnswerItems,
+	setUnansweredQuestionIds,
+	unansweredQuestionIds,
+	quizItemId
+}) => {
+
+	const handleClick = (e) => {
+		//console.log("You clicked!");
+		setChosenAnswerItems((prevState) => [...prevState, question.text])
+		setUnansweredQuestionIds(unansweredQuestionIds.filter((id) => id != quizItemId))
+	}
+
+	const validPick = !chosenAnswerItems?.includes(question.text) &&
+		!unansweredQuestionIds?.includes(quizItemId)
+
 	return (
 		<>
-			<button className="question-block">
+			<button
+				className="question-block"
+				onClick={handleClick}
+				disabled={validPick}
+			>
 				<img src={question.image} alt={question.text} />
 				<h3>{question.text}</h3>
 				<p>

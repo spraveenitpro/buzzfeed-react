@@ -1,13 +1,27 @@
+import { forwardRef } from "react"
 import QuestionBlock from "./QuestionBlock"
 
-const QuestionsBlock = ({ quizItem }) => {
+const QuestionsBlock = ({
+	quizItem,
+	setChosenAnswerItems,
+	chosenAnswerItems,
+	setUnansweredQuestionIds,
+	unansweredQuestionIds }, ref) => {
 	//console.log(quizItem)
 	return (
 		<>
-			<h2 id={quizItem.id} className="question-title">{quizItem.text}</h2>
+			<h2 ref={ref} className="question-title">{quizItem.text}</h2>
 			<div className="questions-container">
 				{quizItem.questions.map((question, _index) => (
-					<QuestionBlock key={_index} question={question} />
+					<QuestionBlock
+						key={_index}
+						quizItemId={quizItem.id}
+						question={question}
+						setChosenAnswerItems={setChosenAnswerItems}
+						chosenAnswerItems={chosenAnswerItems}
+						setUnansweredQuestionIds={setUnansweredQuestionIds}
+						unansweredQuestionIds={unansweredQuestionIds}
+					/>
 				))}
 
 			</div>
@@ -15,4 +29,4 @@ const QuestionsBlock = ({ quizItem }) => {
 	)
 }
 
-export default QuestionsBlock
+export default forwardRef(QuestionsBlock)
